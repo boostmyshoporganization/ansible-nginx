@@ -1,4 +1,4 @@
-Ansible Ngix
+Ansible Nginx
 ==============
 
 Install and configure nginx on Debian server.
