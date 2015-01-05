@@ -1,10 +1,10 @@
 ---
 
 - name: Install nginx
-  apt: name={{ item }} state=present
-  with_items:
-   - nginx
+  apt: name=nginx state=present
+  tags: nginx
 
 - name: Configure Nginx
   copy: src=nginx.conf dest=/etc/nginx/nginx.conf
   notify: restart nginx
+  tags: nginx
