@@ -1,5 +1,5 @@
 user www-data;
-worker_processes {{ ansible_processor_count }};
+worker_processes {{ facter_processorcount }};
 pid /run/nginx.pid;
 
 events {
@@ -32,7 +32,11 @@ http {
     proxy_connect_timeout      300;
     proxy_read_timeout         300;
 
-    client_max_body_size 20M;
+    {% if nginx.variables is defined %}
+    {% for variable in nginx.variables %}
+    {{ variable.name }} {% if variable.value is defined %}{{ variable.value }}{% endif %};
+    {% endfor %}
+    {% endif %}
 
     include /etc/nginx/conf.d/*.conf;
     include /etc/nginx/sites-enabled/*;

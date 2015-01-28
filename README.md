@@ -18,4 +18,6 @@ Configuration
 
 ```yaml
 nginx:
+  variables:
+    - { name: client_max_body_size, value:  5M }
 ```
