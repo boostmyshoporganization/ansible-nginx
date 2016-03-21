@@ -1,5 +1,5 @@
 user www-data;
-worker_processes {{ facter_processorcount }};
+worker_processes {{ ansible_processor_count }};
 pid /run/nginx.pid;
 
 events {
